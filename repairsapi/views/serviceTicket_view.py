@@ -2,10 +2,26 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from repairsapi.models import ServiceTicket
+from repairsapi.models import ServiceTicket, Employee, Customer
+
+
+class ServiceTicketEmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = ("id", "full_name", "specialty")
+
+
+class ServiceTicketCustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = ("id", "full_name", "address")
 
 
 class ServiceTicketSerializer(serializers.ModelSerializer):
+
+    employee = ServiceTicketEmployeeSerializer(many=False)
+    customer = ServiceTicketCustomerSerializer(many=False)
+
     class Meta:
         model = ServiceTicket
         fields = (
