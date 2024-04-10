@@ -27,7 +27,7 @@ from repairsapi.views import CustomerView, EmployeeView, ServiceTicketView
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r"customers", CustomerView, "customer")
 router.register(r"employees", EmployeeView, "employee")
-router.register(r"serviceTickets", ServiceTicketView, "serviceTicket")
+router.register(r"tickets", ServiceTicketView, "serviceTicket")
 
 urlpatterns = [
     path("register", register_user),
