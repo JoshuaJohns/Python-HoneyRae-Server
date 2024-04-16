@@ -8,7 +8,7 @@ from repairsapi.models import Employee
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = ("id", "user", "specialty")
+        fields = ("id", "user", "specialty", "full_name")
 
 
 class EmployeeView(ViewSet):
